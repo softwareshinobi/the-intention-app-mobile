@@ -1,7 +1,9 @@
+set -e
+
+set -x
+
 reset
 
 clear
-
-npm install --force
 
 npm start

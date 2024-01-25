@@ -2,10 +2,6 @@ reset
 
 clear
 
-set -e
+npm install --force
 
-set -x 
-
-cd source-code
-
-npm install
+npm start

@@ -29,19 +29,6 @@ export default function App() {
 
         }, 1000);
 
-// a simple set interval to call a function
-   const updateCountdown1 = () => { 
-               console.log('this is the update countdown');
-        }; 
-  
-        updateCountdown1(); 
-
-        const interval1 = setInterval(updateCountdown1, 1000); 
-
-///////////////////////////////////
-
-
- const updateCountdown = () => { 
 
         console.log("enter > updateCountdown");
         
@@ -89,12 +76,7 @@ export default function App() {
 
     console.log("finished sending request");
          
-//    }, []);
-   }; 
-  
-        updateCountdown(); 
-
-        const interval = setInterval(updateCountdown, 1000); 
+    }, []);
 
     return (
 
