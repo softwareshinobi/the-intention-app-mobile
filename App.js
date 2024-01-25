@@ -8,31 +8,24 @@ import axios from 'axios';
 
 export default function App() {
 
+    const API_END_POINT = 'https://intention.softwareshinobi.digital/intention/';
+
     const [data, setData] = useState({ status: [] });
+
+    const fetchIntentionFromAPI = () => { 
+
+        console.log("enter >  / fetchIntentionFromAPI");
+
+        console.log("ping / " + API_END_POINT);
+
+        console.log("endpoint URL: ",API_END_POINT );
+
+    }; 
     
+    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  8);
+
     useEffect(() => {
 
-
-// a simple set timeout, to run once
-
-        setTimeout(function callback(){
-
-            console.log('This message will be logged after 300 milliseconds or 3 seconds');
-
-        }, 3000);
-
-// a simple set interval to run often
-
-        setInterval(function run(){
-
-            console.log('This will run indefinitely after every 1 second');
-
-        }, 1000);
-
-
-        console.log("enter > updateCountdown");
-        
-        console.log("sending rest request");
 
         var request = new XMLHttpRequest();
 
@@ -66,11 +59,11 @@ export default function App() {
             
        };
        
-    var restEndpoint = 'https://intention.softwareshinobi.digital/intention/';
-    
-    console.log("endpoint URL: ",restEndpoint );
 
-    request.open('GET', restEndpoint);
+    
+    console.log("endpoint URL: ",API_END_POINT );
+
+    request.open('GET', API_END_POINT);
     
     request.send();
 
