@@ -10,22 +10,11 @@ export default function App() {
 
     const API_END_POINT = 'https://intention.softwareshinobi.digital/intention/';
 
-    const [data, setData] = useState({ status: [] });
+    const [data, setData] = useState({ data: [] });
 
     const fetchIntentionFromAPI = () => { 
 
         console.log("enter >  / fetchIntentionFromAPI");
-
-        console.log("ping / " + API_END_POINT);
-
-        console.log("endpoint URL: ",API_END_POINT );
-
-    }; 
-    
-    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  8);
-
-    useEffect(() => {
-
 
         var request = new XMLHttpRequest();
 
@@ -39,35 +28,34 @@ export default function App() {
 
             if (request.status === 200) {
     
-                console.log("the response came back good");
+                console.log("request / code 200 / ok");
 
                 console.log("response: " + request.responseText);
 
-                console.log("load-state-before: ")
-                console.log(data);
+                console.log("state / data / before / ", data);
 
                 setData(request.responseText);
 
-                console.log("load-state-after: ")
+                console.log("state / data /  after / ", data);
+
                 console.log(data);
 
-            } else {
-           
-                console.warn('error');
-                
+            } else {                
             }
             
        };
-       
-
     
-    console.log("endpoint URL: ",API_END_POINT );
+    console.log("GET / " + API_END_POINT);
 
     request.open('GET', API_END_POINT);
     
     request.send();
 
-    console.log("finished sending request");
+    }; 
+    
+    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  8);
+
+    useEffect(() => {
          
     }, []);
 
@@ -104,12 +92,10 @@ const styles = StyleSheet.create({
     },
 
     content: {
-    
-        //   fontSize: RFValue(124, 580), // arg #2 is standardScreenHeight(optional), 
-    
+     
         fontSize: 48,
     
-     transform: [{ rotate: '90deg'}]//this needs to be removed
+     transform: [{ rotate: '90deg'}]
     
     },
 

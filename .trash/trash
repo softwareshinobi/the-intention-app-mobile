@@ -1,0 +1,15 @@
+// a simple set interval to call a function
+   const updateCountdown1 = () => { 
+               console.log('this is the update countdown');
+        }; 
+  
+        updateCountdown1(); 
+
+        const interval1 = setInterval(updateCountdown1, 1000); 
+
+///////////////////////////////////
+
+
+        console.log("enter > updateCountdown");
+        
+        console.log("sending rest request");
