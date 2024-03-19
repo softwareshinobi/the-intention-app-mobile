@@ -8,13 +8,15 @@ import axios from 'axios';
 
 export default function App() {
 
-    const API_END_POINT = 'https://intention.softwareshinobi.digital/intention/';
+ //   const API_END_POINT = 'http://localhost:8888/';
+
+    const API_END_POINT = 'https://apis.intention.softwareshinobi.digital/intention/';
 
     const [data, setData] = useState({ data: [] });
 
     const fetchIntentionFromAPI = () => { 
 
-        console.log("enter >  / fetchIntentionFromAPI");
+        console.log("enter >  / getIntention");
 
         var request = new XMLHttpRequest();
 
@@ -22,6 +24,12 @@ export default function App() {
 
             if (request.readyState !== 4) {
             
+                console.log("error / " + request.responseText);
+
+                setData(request.responseText);
+
+                setData("<server error>\ntry again, mr anderson");
+
                 return;
             
             }
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
 
         flex: 1,     
 
-        backgroundColor: 'pink',
+        backgroundColor: 'hotpink',
 
         alignItems: 'center',
 
