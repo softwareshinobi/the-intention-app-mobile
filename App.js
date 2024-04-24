@@ -12,8 +12,19 @@ export default function App() {
 
     const [data, setData] = useState({ data: [] });
 
+    const aaa = () => { 
+
+        console.log("enter >  / fetchIntentionFromAPI");
+
+                setData("ssss");
+
+}
+
+ 
+
     const fetchIntentionFromAPI = () => { 
 
+aaa();
         console.log("enter >  / fetchIntentionFromAPI");
 
         var request = new XMLHttpRequest();
@@ -53,7 +64,8 @@ export default function App() {
 
     }; 
     
-    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  8);
+               // setData("3333");
+    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  2);
 
     useEffect(() => {
          
@@ -65,7 +77,7 @@ export default function App() {
 
             <Text style={styles.content}>
 
-                   { data + "" }
+                   { data }
                 
             </Text>
 
