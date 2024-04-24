@@ -1,0 +1,12 @@
+//    {JSON.stringify(data, null, 0)}
+
+
+{data && ( // Check if data exists
+    <Text style={styles.content}>
+      {data.name ? ( // Check if "name" property exists
+        data.name // Display "name" value
+      ) : (
+        "No name or empty name" // Display message for missing or empty name
+      )}
+    </Text>
+  )}

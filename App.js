@@ -1,102 +1,39 @@
-import React, { Component, useState, useEffect } from 'react';
-
-import { StatusBar } from 'expo-status-bar';
-
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+const MyComponent = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
-import axios from 'axios';
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://192.168.1.4:8888/');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const fetchedData = await response.text();
+        setData(fetchedData);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
 
-export default function App() {
+    fetchData();
+  }, []);
 
-    const API_END_POINT = 'https://intention.softwareshinobi.digital/intention/';
+  return (
+    <View >
+      {error ? (
+        <Text> error: / {error}</Text>
+      ) : (
+        data ? (
+          <Text >Fetched data: {data}</Text>
+        ) : (
+          <Text >Loading...</Text>
+        )
+      )}
+    </View>
+  );
+};
 
-    const [data, setData] = useState({ data: [] });
-
-    const fetchIntentionFromAPI = () => { 
-
-        console.log("enter >  / fetchIntentionFromAPI");
-
-        var request = new XMLHttpRequest();
-
-        request.onreadystatechange = (e) => {
-
-            if (request.readyState !== 4) {
-            
-                return;
-            
-            }
-
-            if (request.status === 200) {
-    
-                console.log("request / code 200 / ok");
-
-                console.log("response: " + request.responseText);
-
-                console.log("state / data / before / ", data);
-
-                setData(request.responseText);
-
-                console.log("state / data /  after / ", data);
-
-                console.log(data);
-
-            } else {                
-            }
-            
-       };
-    
-    console.log("GET / " + API_END_POINT);
-
-    request.open('GET', API_END_POINT);
-    
-    request.send();
-
-    }; 
-    
-    const intervalFetchIntentionFromAPI = setInterval(fetchIntentionFromAPI, 1000 *  8);
-
-    useEffect(() => {
-         
-    }, []);
-
-    return (
-
-        <View style={styles.container}>
-
-            <Text style={styles.content}>
-
-                   { data + "" }
-                
-            </Text>
-
-            <StatusBar style="auto" />
-
-        </View>
-        
-    );
-  
-}
-
-const styles = StyleSheet.create({
-
-    container: {
-
-        flex: 1,     
-
-        backgroundColor: 'pink',
-
-        alignItems: 'center',
-
-        justifyContent: 'center',
-
-    },
-
-    content: {
-     
-        fontSize: 48,
-    
-     transform: [{ rotate: '90deg'}]
-    
-    },
-
-});
+export default MyComponent;
