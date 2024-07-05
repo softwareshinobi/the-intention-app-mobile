@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DwityUniverse",
-    "slug": "dwity-universe",
+    "name": "TheIntentionApp",
+    "slug": "the-intention-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.softwareshinobi.theintentionapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.softwareshinobi.theintentionapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1afc308b-87cf-4cb8-9e7d-a1bf199eba95"
+      }
+    },
+    "owner": "softwareshinobi",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1afc308b-87cf-4cb8-9e7d-a1bf199eba95"
     }
   }
 }
